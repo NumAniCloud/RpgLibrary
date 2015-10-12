@@ -11,7 +11,7 @@ namespace RpgLibrary.Study1
 		public bool IsAlive => Hp > 0;
 
 		public string Name { get; private set; }
-		public int Hp { get; private set; }
+		public int Hp { get; set; }
 
 		public Actor(string name, int hp)
 		{
@@ -19,7 +19,7 @@ namespace RpgLibrary.Study1
 			Hp = hp;
 		}
 
-		public void OnTurn()
+		public virtual void OnTurn()
 		{
 			Hp -= 1;
 			Console.WriteLine($"{Name}:{Hp}");

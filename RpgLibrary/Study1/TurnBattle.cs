@@ -8,21 +8,21 @@ namespace RpgLibrary.Study1
 {
 	class TurnBattle<TActor> where TActor : IActor
 	{
-		TActor[] actors;
-		ITurnRule<TActor> rule;
+		public TActor[] Actors { get; set; }
+		public ITurnRule<TActor> TurnRule { get; set; }
 
-		public TurnBattle(TActor[] actors, ITurnRule<TActor> rule)
+		public TurnBattle()
 		{
-			this.actors = actors;
-			this.rule = rule;
+			Actors = new TActor[0];
+			TurnRule = (ITurnRule<TActor>)new SimpleTurnRule();
 		}
 
 		public void Run()
 		{
-			foreach(IActor item in rule.GetTurnOrder(actors))
+			foreach(IActor item in TurnRule.GetTurnOrder(Actors))
 			{
 				item.OnTurn();
-				if(actors.All(x => !x.IsAlive))
+				if(Actors.All(x => !x.IsAlive))
 				{
 					break;
 				}

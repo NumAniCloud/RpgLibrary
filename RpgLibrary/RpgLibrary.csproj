@@ -43,11 +43,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Study1\Actor.cs" />
+    <Compile Include="Study1\CommandActor.cs" />
     <Compile Include="Study1\ActorHavingSpeed.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Study1\Command\HealCommand.cs" />
+    <Compile Include="Study1\Command\DamageCommand.cs" />
     <Compile Include="Study1\IActor.cs" />
     <Compile Include="Study1\IActorHavingSpeed.cs" />
+    <Compile Include="Study1\Command\ICommand.cs" />
     <Compile Include="Study1\ITurnRule.cs" />
     <Compile Include="Study1\SimpleTurnRule.cs" />
     <Compile Include="Study1\TurnBattle.cs" />
@@ -56,6 +60,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
