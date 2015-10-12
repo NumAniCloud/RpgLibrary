@@ -11,23 +11,23 @@ namespace RpgLibrary
 	{
 		static void Main(string[] args)
 		{
-			IActor[] actors = new IActor[]
+			Actor[] actors = new Actor[]
 			{
 				new Actor("A", 10),
 				new Actor("B", 12),
 			};
-			var battle = new TurnBattle(actors, new TurnRuleSpeedProvideTurn());
+			var battle = new TurnBattle<IActor>(actors, new SimpleTurnRule());
 			battle.Run();
 		}
 
 		private static void Test1()
 		{
-			IActor[] actors = new IActor[]
+			ActorHavingSpeed[] actors = new ActorHavingSpeed[]
 			{
 				new ActorHavingSpeed("A", 10, 2),
 				new ActorHavingSpeed("B", 12, 4),
 			};
-			var battle = new TurnBattle(actors, new TurnRuleSpeedProvideTurn());
+			var battle = new TurnBattle<IActorHavingSpeed>(actors, new TurnRuleSpeedProvideTurn());
 
 			battle.Run();
 		}

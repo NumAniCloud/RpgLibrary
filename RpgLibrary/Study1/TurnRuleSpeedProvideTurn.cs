@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RpgLibrary.Study1
 {
-	class TurnRuleSpeedProvideTurn : ITurnRule
+	class TurnRuleSpeedProvideTurn : ITurnRule<IActorHavingSpeed>
 	{
 		class TurnCount
 		{
@@ -14,20 +14,10 @@ namespace RpgLibrary.Study1
 			public int Count { get; set; }
 		}
 
-		public IEnumerable<IActor> GetTurnOrder(IActor[] actors)
+		public IEnumerable<IActor> GetTurnOrder(IActorHavingSpeed[] actors)
 		{
-			TurnCount[] actorHaveSpeed = null;
-
-			try
-			{
-				actorHaveSpeed = actors.Cast<IActorHavingSpeed>()
-				   .Select(x => new TurnCount() { Actor = x, Count = 0 })
-				   .ToArray();
-			}
-			catch(InvalidCastException)
-			{
-				throw new InvalidCastException("アクターはすべて IActorHavingSpeed 型である必要があります。");
-			}
+			TurnCount[] actorHaveSpeed = actors.Select(x => new TurnCount() { Actor = x, Count = 0 })
+				.ToArray();
 
 			while(true)
 			{

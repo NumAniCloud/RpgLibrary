@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RpgLibrary.Study1
 {
-	class SimpleTurnRule : ITurnRule
+	class SimpleTurnRule : ITurnRule<IActor>
 	{
 		public IEnumerable<IActor> GetTurnOrder(IActor[] actors)
 		{

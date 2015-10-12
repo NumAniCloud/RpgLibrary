@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace RpgLibrary.Study1
 {
-	class TurnBattle
+	class TurnBattle<TActor> where TActor : IActor
 	{
-		IActor[] actors;
-		ITurnRule rule;
+		TActor[] actors;
+		ITurnRule<TActor> rule;
 
-		public TurnBattle(IActor[] actors, ITurnRule rule)
+		public TurnBattle(TActor[] actors, ITurnRule<TActor> rule)
 		{
 			this.actors = actors;
 			this.rule = rule;

@@ -2,8 +2,8 @@
 
 namespace RpgLibrary.Study1
 {
-	public interface ITurnRule
+	public interface ITurnRule<TActor> where TActor : IActor
 	{
-		IEnumerable<IActor> GetTurnOrder(IActor[] actors);
+		IEnumerable<IActor> GetTurnOrder(TActor[] actors);
 	}
 }
